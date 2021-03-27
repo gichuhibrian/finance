@@ -1,22 +1,25 @@
-//create an invoice class
-class Invoice {
-  client: string;
-  detail: string;
-  amount: number;
-
-  constructor(c: string, d: string, a: number) {
-    this.client = c;
-    this.detail = d;
-    this.amount = a;
-  }
-
-  //generic return on invoice class
-  format() {
-    return console.log(
-      `${this.client} owes Ksh${this.amount} for ${this.detail}`
-    );
-  }
+interface IsPerson {
+  name: string;
+  age: number;
+  speak(a: string): void;
+  spend(a: number): number;
 }
+
+import { Invoice } from "./classes/Invoice.classes.js";
+
+const me: IsPerson = {
+  name: "brian",
+  age: 30,
+  speak(text: string) {
+    console.log(text);
+  },
+  spend(amount: number) {
+    console.log(`I spent ${amount}`);
+    return amount;
+  },
+};
+
+console.log(me);
 
 const invOne = new Invoice("brian", "work on website", 10000);
 const invTwo = new Invoice("luiz", "studying typescript", 300);
@@ -28,7 +31,7 @@ invoices.push(invTwo);
 console.log(invoices);
 
 invoices.forEach((invoice) => {
-  console.log(invoice.client, invoice.detail, invoice.amount);
+  console.log(invoice.client, invoice.detail, invoice.amount, invoice.format());
 });
 
 //get the form
